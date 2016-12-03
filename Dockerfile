@@ -20,4 +20,8 @@ RUN mkdir /app
 WORKDIR /app
 ADD . /app
 
-CMD ["npm", "start"]
+ENV PATH /tg/bin/:$PATH
+
+EXPOSE 9999
+
+ENTRYPOINT ["telegram-cli", "-d", "--tcp-port", "9999", "--accept-any-tcp", "--json", "--sync-from-start"]
